@@ -1,5 +1,7 @@
 # ActiveRecord
 
+## Basic Queries
+
 ```ruby
 Post.last
 Post.first
@@ -8,6 +10,8 @@ Post.first 5
 
 # Returns a single object
 ```
+
+## Where queries
 
 ```ruby
 Post.where(priority: nil)
@@ -18,12 +22,16 @@ Post.where(priority: 90)
 # Returns a collection
 ```
 
+## Dynamic find_by Queries
+
 ```ruby
 Post.find_by_priority(100)
 Post.find_by(priority: 100)
 Post.find_by(title: "Some Post", priority: 100) # Returns object
 Post.find_by(title: "Some Post2", priority: 100) # Returns nil
 ```
+
+## Eager loading
 
 ```ruby
 users = User.includes(:setting)
@@ -32,10 +40,13 @@ users.each do |user|
 end
 ```
 
+## Joins with Conditionals
+
 ```ruby
 User.joins(:posts).where('posts.priority > ?', 50)
-# Returns data for all multiple tables
 ```
+
+## Find or Create
 
 ```ruby
 Topic.find_or_create_by(title: 'Business')
